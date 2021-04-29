@@ -1,6 +1,6 @@
 create table apps(name varchar(100), category varchar(100), genre varchar(100), price float, type varchar(10), id int, primary key(id));
 create table reviews(name varchar(100), rating real, review int, content varchar(50));
-create table versions (id int, latest date, version char(10), android_version char(10), install int, size float, primary key(id));
+create table versions (id int, latest date, version char(10), android_version char(10), install int, size float, foreign key(id) references apps(id));
 create table sentiment (name varchar(100), comment vachar(500), pov varchar(50));
 
 
