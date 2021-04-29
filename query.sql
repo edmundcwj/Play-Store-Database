@@ -12,6 +12,11 @@ select category, sum(review) as total_reviews from apps a, reviews r where a.nam
 select category, count(*) from apps where type like 'Free' group by category order by count(genre) desc;
 select name as app_name, genre, v.install as total_downloads from apps a, versions v where type = 'Free' and a.id = v.id and v.install > 10000000 and app_name in(select name from reviews where rating >= 3);
 
+create view prod_apps as
+select * from apps as a, versions as v where a.id = v.id and genre like 'productivity';
+
+select * from prod_apps where type like 'paid' order by price desc limit 5;                                                                           
+                                                                            
 insert into apps values
 ('Attack on Titan', 'GAME', 'Action', 5.00, 'Paid', 10843),
 ('Say What Messenger', 'COMMUNICATION', 'communication', 0.00, 'Free', 10844);
